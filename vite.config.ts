@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: resolve(__dirname, "src/lib/cdn-entry.ts"),
+      entry: resolve(__dirname, "./src/lib/cdn-entry.tsx"),
       name: "MyModalComponent",
       fileName: "my-modal-component",
       formats: ["umd", "es"],
