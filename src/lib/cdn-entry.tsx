@@ -6,7 +6,7 @@ import Modal_Container from "../components/ModalContainer";
 declare global {
   interface Window {
     renderMyComponent: (
-      containerId: string,
+      containerId?: string,
       props?: Record<string, any>,
     ) => void;
   }
@@ -14,7 +14,7 @@ declare global {
 
 // This function will be available globally
 window.renderMyComponent = (
-  containerId: string,
+  containerId: string = "__modal_component",
   props: Record<string, any> = {},
 ) => {
   const container = document.getElementById(containerId);
