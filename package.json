@@ -5,12 +5,12 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/my-modal-component.umd.cjs",
-  "module": "./dist/my-modal-component.js",
+  "main": "./dist/modal-cdn.umd.cjs",
+  "module": "./dist/modal-cdn.js",
   "exports": {
     ".": {
-      "import": "./dist/my-modal-component.js",
-      "require": "./dist/my-modal-component.umd.cjs"
+      "import": "./dist/modal-cdn.js",
+      "require": "./dist/modal-cdn.umd.cjs"
     }
   },
   "type": "module",

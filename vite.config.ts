@@ -8,7 +8,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "./src/lib/cdn-entry.tsx"),
       name: "MyModalComponent",
-      fileName: "my-modal-component",
+      fileName: "modal-cdn",
       formats: ["umd", "es"],
     },
     rollupOptions: {
