@@ -11,16 +11,5 @@ export default defineConfig({
       fileName: "modal-cdn",
       formats: ["umd", "es"],
     },
-    rollupOptions: {
-      // Make sure to externalize deps that shouldn't be bundled
-      external: ["react", "react-dom"],
-      output: {
-        // Provide global variables to use in the UMD build
-        globals: {
-          react: "React",
-          "react-dom": "ReactDOM",
-        },
-      },
-    },
   },
 });
