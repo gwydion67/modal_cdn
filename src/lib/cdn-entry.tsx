@@ -5,7 +5,9 @@ import Modal_Container from "../components/ModalContainer";
 // Auto-initialize if there's a container with the expected ID
 document.addEventListener("DOMContentLoaded", () => {
   // Look for containers with data attributes
+  console.log("modal script loaded");
   const container = document.getElementById("__modal_component");
+  console.log("loaded", container);
 
   const props: Record<string, string | null | undefined> = {
     buttonText: container?.getAttribute("data-button-text"),

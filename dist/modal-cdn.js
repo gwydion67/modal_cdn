@@ -25362,7 +25362,10 @@ const DS = ({
   ] });
 };
 document.addEventListener("DOMContentLoaded", () => {
-  const V = document.getElementById("__modal_component"), Je = {
+  console.log("modal script loaded");
+  const V = document.getElementById("__modal_component");
+  console.log("loaded", V);
+  const Je = {
     buttonText: V == null ? void 0 : V.getAttribute("data-button-text"),
     modalTitle: V == null ? void 0 : V.getAttribute("data-modal-title"),
     modalContent: V == null ? void 0 : V.getAttribute("data-modal-content"),
