@@ -25363,17 +25363,21 @@ const DS = ({
 };
 document.addEventListener("DOMContentLoaded", () => {
   console.log("modal script loaded");
-  const V = document.getElementById("__modal_component");
-  console.log("loaded", V);
-  const Je = {
-    buttonText: V == null ? void 0 : V.getAttribute("data-button-text"),
-    modalTitle: V == null ? void 0 : V.getAttribute("data-modal-title"),
-    modalContent: V == null ? void 0 : V.getAttribute("data-modal-content"),
-    apiKey: V == null ? void 0 : V.getAttribute("data-api-key"),
-    apiUrl: V == null ? void 0 : V.getAttribute("data-api-url"),
-    theme: (V == null ? void 0 : V.getAttribute("data-theme")) || "light"
-  };
-  Object.keys(Je).forEach((H) => {
-    Je[H] === null && delete Je[H];
-  }), ES.createRoot(V).render(Qv.createElement(OS, Je));
+  try {
+    const V = document.getElementById("__modal_component");
+    console.log("loaded", V);
+    const Je = {
+      buttonText: V == null ? void 0 : V.getAttribute("data-button-text"),
+      modalTitle: V == null ? void 0 : V.getAttribute("data-modal-title"),
+      modalContent: V == null ? void 0 : V.getAttribute("data-modal-content"),
+      apiKey: V == null ? void 0 : V.getAttribute("data-api-key"),
+      apiUrl: V == null ? void 0 : V.getAttribute("data-api-url"),
+      theme: (V == null ? void 0 : V.getAttribute("data-theme")) || "light"
+    };
+    Object.keys(Je).forEach((H) => {
+      Je[H] === null && delete Je[H];
+    }), ES.createRoot(V).render(Qv.createElement(OS, Je));
+  } catch (V) {
+    console.log("Error occured : ", V);
+  }
 });
