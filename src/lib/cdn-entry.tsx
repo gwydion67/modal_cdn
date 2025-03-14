@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   console.log("modal script loaded");
   try {
     const container = document.getElementById("__modal_component");
-    console.log("loaded", container);
+    console.log("found container", container);
 
     const props: Record<string, string | null | undefined> = {
       buttonText: container?.getAttribute("data-button-text"),
