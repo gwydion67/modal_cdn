@@ -1,10 +1,14 @@
 import "./App.css";
-import Modal_Container from "./components/ModalContainer";
+import Layout from "./components/layout";
 
-function App() {
+interface AppProps {
+  apiKey: string | null;
+}
+
+function App({ apiKey }: AppProps) {
   return (
     <>
-      <Modal_Container />
+      <Layout apiKey={apiKey} />
     </>
   );
 }
