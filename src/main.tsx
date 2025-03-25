@@ -1,9 +1,6 @@
 import App from "./App";
 import { createRoot } from "react-dom/client";
 import styleText from "./App.css?inline";
-import { twind, cssom, observe } from "@twind/core";
-import "construct-style-sheets-polyfill";
-import config from "../twind.config";
 
 (function () {
   const mountWidget = () => {
@@ -33,11 +30,6 @@ import config from "../twind.config";
     style.textContent = styleText;
     shadowRoot.appendChild(style);
 
-    //Twind
-    const sheet = cssom(new CSSStyleSheet());
-    const tw = twind(config, sheet);
-    shadowRoot.adoptedStyleSheets = [sheet.target];
-    observe(tw, shadowRoot);
     // Initialize React and render the App
     const reactRoot = createRoot(reactContainer);
     reactRoot.render(<App apiKey={apiKey} />);
