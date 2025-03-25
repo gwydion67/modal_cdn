@@ -24,11 +24,22 @@ import styleText from "./App.css?inline";
     const shadowRoot = container.attachShadow({ mode: "open" });
     domElement.appendChild(container);
 
+    const defStyle = document.createElement("style");
+    defStyle.textContent = `
+      :host {
+        all: initial;
+        display: contents;
+      };
+      :host * {
+        all: initial;
+      }
+    `;
+    shadowRoot.appendChild(defStyle);
+
     // Initialize React and render the App
     const style = document.createElement("style");
     style.textContent = styleText;
-    // shadowRoot.appendChild(style);
-    
+    shadowRoot.appendChild(style);
 
     const reactRoot = createRoot(shadowRoot);
     reactRoot.render(<App apiKey={apiKey} />);
