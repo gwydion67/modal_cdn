@@ -1,37 +1,36 @@
 import App from "./App";
 import { createRoot } from "react-dom/client";
 import styleText from "./App.css?inline";
-
+//
 (function () {
   const mountWidget = () => {
     // Find the container element
-    const container = document.getElementById("bytebellai");
+    const container = document.createElement("div");
 
     // Exit if container is not found
-    if (!container) {
+    // Create container for React
+    const domElement = document.getElementById("__modal_component");
+    if (!domElement) {
       console.error(
-        'Shadow Widget: Target element with ID "bytebellai" not found.',
+        'Shadow Widget: Target element with ID "__modal_component" not found.',
       );
       return;
     }
 
     // Get API key from data attribute
-    const apiKey = container.getAttribute("data-api-key");
-
-    const shadowRoot = container.attachShadow({ mode: "open" });
-
-    // Create container for React
-    const reactContainer = document.createElement("div");
-    reactContainer.id = "bytebell-widget-root";
+    const apiKey = domElement.getAttribute("data-api-key");
 
     // Append container to shadow root
-    shadowRoot.appendChild(reactContainer);
-    const style = document.createElement("style");
-    style.textContent = styleText;
-    shadowRoot.appendChild(style);
+    const shadowRoot = container.attachShadow({ mode: "open" });
+    domElement.appendChild(container);
 
     // Initialize React and render the App
-    const reactRoot = createRoot(reactContainer);
+    const style = document.createElement("style");
+    style.textContent = styleText;
+    // shadowRoot.appendChild(style);
+    
+
+    const reactRoot = createRoot(shadowRoot);
     reactRoot.render(<App apiKey={apiKey} />);
   };
 

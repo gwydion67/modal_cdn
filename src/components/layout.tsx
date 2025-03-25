@@ -14,9 +14,10 @@ interface LayoutProps {
 const Layout = ({ apiKey }: LayoutProps) => {
   return (
     <div>
+      <div>test text</div>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" className="bgclass">
+          <Button variant="outline" className="">
             Mode ai
           </Button>
         </DialogTrigger>
