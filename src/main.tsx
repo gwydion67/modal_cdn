@@ -15,14 +15,11 @@ const TailwindLoader = ({ children }: { children: React.ReactNode }) => {
       let iframeDoc = iframe.contentDocument || iframe.contentWindow?.document!;
       let tw = iframeDoc.createElement("script");
       tw.setAttribute("src", "https://cdn.tailwindcss.com");
-      tw.onload = function () {
-        iframeDoc.body.innerHTML = iframeDoc.body.innerHTML; //re render
-      };
       iframeDoc.head.appendChild(tw);
     }
 
     etw();
-  }, []);
+  }, [children]);
 
   return <>{children}</>;
 };
