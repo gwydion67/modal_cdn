@@ -56,13 +56,18 @@ const TailwindLoader = ({ children }: { children: React.ReactNode }) => {
 
 (function () {
   const mountWidget = () => {
-    const domElement = document.getElementById("__modal_component");
+    const domElement = document.getElementById("__modal_component") as HTMLElement & { __isMounted?: boolean };
     if (!domElement) {
       console.error(
         'Shadow Widget: Target element with ID "__modal_component" not found.',
       );
       return;
     }
+
+    // Prevent duplicate mounts
+    if (domElement.__isMounted) return;
+    domElement.__isMounted = true;
+
     domElement.style.height = "100%";
     domElement.style.width = "100%";
     const apiKey = domElement.getAttribute("data-api-key");
@@ -76,12 +81,27 @@ const TailwindLoader = ({ children }: { children: React.ReactNode }) => {
     );
   };
 
-  // Determine when to mount the widget based on document state
+  const observeDomChanges = () => {
+    const observer = new MutationObserver(() => {
+      const domElement = document.getElementById("__modal_component") as HTMLElement & { __isMounted?: boolean };
+      if (domElement && !domElement.__isMounted) {
+        setTimeout(mountWidget, 0);
+      }
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  };
+
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
       setTimeout(mountWidget, 1000);
+      observeDomChanges();
     });
   } else {
     setTimeout(mountWidget, 1000);
+    observeDomChanges();
   }
 })();
